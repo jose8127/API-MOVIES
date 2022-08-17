@@ -2,23 +2,23 @@ const express = require("express");
 const userRroutes = require("../routes/users.routes")
 
 function configureApp(app) {
-    //configuracion
+	//configuracion
 
-    app.set("port", process.env.PORT)
+	app.set("port", process.env.PORT)
 
-    app.use(express.json())
+	app.use(express.json())
 
-    app.get("/", (req, res) => {
-        res.json({
-            "name": "API Movies",
-            "description": "Example CRUD API Movies",
-            "version": "V1"
-        })
-    })
+	app.get("/", (req, res) => {
+		res.json({
+			"name": "API Movies",
+			"description": "Example CRUD API Movies",
+			"version": "V1"
+		})
+	})
 
-    app.use("/api", userRroutes);
+	app.use("/api", userRroutes);
 
-    return app;
+	return app;
 }
 
 module.exports = configureApp
