@@ -1,8 +1,6 @@
 const { Router } = require("express");
 const{ register, login} = require("../controllers/auth")
 
-require("../controllers/auth")
-
 const routes = Router();
 
 routes.post("/auth/register", register);

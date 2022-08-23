@@ -1,12 +1,12 @@
 const express = require("express");
-const userRroutes = require("../routes/users.routes")
+const userRoutes = require("../routes/users.routes")
 
 function configureApp(app) {
 	//configuracion
 
-	app.set("port", process.env.PORT)
+	app.set("port", process.env.PORT);
 
-	app.use(express.json())
+	app.use(express.json());
 
 	app.get("/", (req, res) => {
 		res.json({
@@ -14,11 +14,11 @@ function configureApp(app) {
 			"description": "Example CRUD API Movies",
 			"version": "V1"
 		})
-	})
+	});
 
-	app.use("/api", userRroutes);
+	app.use("/api", userRoutes);
 
 	return app;
 }
 
-module.exports = configureApp
+module.exports = configureApp;

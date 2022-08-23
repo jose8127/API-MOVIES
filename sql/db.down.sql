@@ -1,4 +1,4 @@
-DROP TABLE IF EXIST "schemamovies".movies_genders
+DROP TABLE IF EXISTS "schemamovies".movies_genders
 DROP TABLE IF EXISTS "schemamovies".characters_movies;
 DROP TABLE IF EXISTS "schemamovies".characters;
 DROP TABLE IF EXISTS "schemamovies".movies;
