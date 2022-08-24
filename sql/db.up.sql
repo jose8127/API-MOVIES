@@ -41,18 +41,14 @@ CREATE TABLE IF NOT EXISTS "schemamovies".characters_movies (
 	"idCharacters_movies" SERIAL PRIMARY KEY,
 	"characters_idCharacters" bigint,
 	"movies_idMovies" bigint,
-	CONSTRAINT fk_characters_idCharacters FOREIGN KEY("characters_idCharacters"),
-	REFERENCES "schemamovies".characters("idCharacters"),
-	CONSTRAINT fk_movies_idMovies FOREIGN KEY("movies_idMovies"),
-	REFERENCES "schemamovies".movies("idMovies")
+	CONSTRAINT fk_characters_idCharacters FOREIGN KEY("characters_idCharacters") REFERENCES "schemamovies".characters("idCharacters"),
+	CONSTRAINT fk_movies_idMovies FOREIGN KEY("movies_idMovies") REFERENCES "schemamovies".movies("idMovies")
 );
 
 CREATE TABLE IF NOT EXISTS "schemamovies".movies_genders (
 	"idMovies_genders" SERIAL PRIMARY KEY,
 	"movies_idMovies" bigint,
 	"genders_idGenders" bigint,
-	CONSTRAINT fk_movies_idMovies FOREIGN KEY("movies_idMovies"),
-	REFERENCES "schemamovies".movies("idMovies"),
-	CONSTRAINT fk_genders_idGenders FOREIGN KEY("genders_idGenders"),
-	REFERENCES "schemamovies".genders("idGenders")
+	CONSTRAINT fk_movies_idMovies FOREIGN KEY("movies_idMovies") REFERENCES "schemamovies".movies("idMovies"),
+	CONSTRAINT fk_genders_idGenders FOREIGN KEY("genders_idGenders") REFERENCES "schemamovies".genders("idGenders")
 );
