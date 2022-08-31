@@ -16,14 +16,14 @@ const register = async (req, res) => {
 			error: null
 		});
 
-	} catch (error) {
-		console.error(error)
+	} catch (err) {
+		console.error(err)
 
 		res.json({
 			data: null,
 			success: false,
 			message: "something went wrong. ",
-			error: error.detail
+			error: err.detail
 
 		});
 	} finally {
