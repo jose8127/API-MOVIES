@@ -1,5 +1,8 @@
 const { connect, disconnect } = require("../../config/dbConnection")
 const { encryptPassword } = require("../../utils/encryptPassword")
+const { HttpStatusCode } = require("../../const/statusCodes")
+const { makeResponse } = require("../../utils/makeResponse")
+
 const register = async (req, res) => {
 	const pool = await connect();
 	const { username, email, password } = req.body;
@@ -8,24 +11,12 @@ const register = async (req, res) => {
 	try {
 		const queryResponse = await pool.query('INSERT INTO schemamovies.users(username, email, password) VALUES($1, $2, $3) RETURNING "idUsers", "username", "email"', [username, email, passEncrypted]);
 		const newUser = queryResponse.rows;
-
-		res.json({
-			data: newUser,
-			success: true,
-			message: "user registered successfully. ",
-			error: null
-		});
+		return res.status(HttpStatusCode.BAD_REQUEST).json(makeResponse(newUser, true, "user registered successfully. ", null));
 
 	} catch (err) {
-		console.error(err)
+		console.error(err.detail)
+		return res.status(HttpStatusCode.BAD_REQUEST).json(makeResponse(null, false, "something went wrong. ", err.detail));
 
-		res.json({
-			data: null,
-			success: false,
-			message: "something went wrong. ",
-			error: err.detail
-
-		});
 	} finally {
 		disconnect(pool);
 	}
