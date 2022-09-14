@@ -10,4 +10,3 @@ routes.post("/auth/register", validateUserData, register);
 routes.post("/auth/login", validateUserDataLogin, login) ;
 
 module.exports = routes;
-
