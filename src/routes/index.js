@@ -3,3 +3,4 @@ module.exports = {
 	movieRoutes: require('./movie.routes'),
 	characterRoutes: require('./character.routes'),
 };
+
